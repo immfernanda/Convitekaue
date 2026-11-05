@@ -11,7 +11,9 @@
 <meta property="og:image" content="https://immfernanda.github.io/Convitekaue/img/og.jpg">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#f4e4c1">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+<link rel="icon" type="image/svg+xml" href="img/bola.svg?v=2">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-bola.png?v=2">
+<link rel="apple-touch-icon" href="img/apple-touch-bola.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Passion+One:wght@400;700&family=Yellowtail&family=Caveat:wght@600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
@@ -426,27 +428,24 @@ body.encerrado .so-aberto{display:none!important}
   .selo-contagem{width:92px;height:92px;right:-10px}
   .selo-contagem strong{font-size:2.2rem}
 }
-/* atividades inclusas na entrada */
-.atividades{margin-top:22px;background:rgba(255,250,240,.9);border:2px dashed var(--turquesa);border-radius:6px;padding:18px 16px 16px}
-.atividades h3{margin:0 0 12px;text-align:center;font-family:var(--placa);font-weight:700;font-size:1.5rem;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--verde);text-shadow:1.5px 1.5px 0 rgba(246,196,69,.7)}
-.atividades ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.atividades li{display:flex;flex-wrap:wrap;align-items:center;column-gap:8px;background:#fff;border:1.5px solid #e6dcc6;border-radius:999px;padding:8px 12px;min-width:0}
-.atividades li.largo{grid-column:1 / -1;justify-content:center}
-.atividades li span{font-size:1.25rem;line-height:1}
-.atividades li b{font-weight:600;font-size:.95rem;color:var(--azul-escuro)}
-.atividades li small{flex-basis:100%;padding-left:2.1rem;margin-top:-2px;font-size:.72rem;color:var(--cinza)}
-
-@media (max-width:480px){
-  .atividades{padding:16px 12px 14px}
-  .atividades h3{font-size:1.3rem}
-  .atividades ul{gap:6px}
-  .atividades li{flex-wrap:nowrap;padding:7px 9px;column-gap:6px}
-  .atividades li span{font-size:1.05rem}
-  .atividades li b{font-size:.8rem;white-space:nowrap}
-  .atividades li small{display:none}
-  .atividades li b::after{content:attr(data-extra)}
-}
+/* atividades: plaquinha de madeira de quiosque, pintada à mão */
+.atividades{position:relative;margin-top:26px;padding:22px 22px 20px;text-align:center;border-radius:5px;transform:rotate(-1.2deg);
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.06),transparent 18%,transparent 82%,rgba(0,0,0,.08)),
+    repeating-linear-gradient(180deg,transparent 0 41px,rgba(60,30,10,.45) 41px 43px),
+    repeating-linear-gradient(176deg,rgba(255,255,255,.05) 0 2px,transparent 2px 9px),
+    repeating-linear-gradient(183deg,rgba(80,40,10,.10) 0 1px,transparent 1px 6px),
+    #b9783f;
+  box-shadow:0 3px 0 #7d4a22,0 14px 22px rgba(60,40,10,.28)}
+.atividades .prego{position:absolute;width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e9e4d8,#8a8478 60%,#4d483f)}
+.atividades .p1{top:9px;left:10px}.atividades .p2{top:9px;right:10px}.atividades .p3{bottom:9px;left:10px}.atividades .p4{bottom:9px;right:10px}
+.atividades h3{margin:0 0 6px;font-family:var(--chunky);font-weight:400;font-size:2rem;color:var(--amarelo);
+  text-shadow:2px 2px 0 #5b3416;transform:rotate(-2deg)}
+.atividades ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;column-gap:6px;row-gap:2px}
+.atividades li{font-family:var(--placa);font-weight:700;font-size:1.3rem;text-transform:uppercase;letter-spacing:.03em;color:#fff6e0;
+  text-shadow:1.5px 1.5px 0 #5b3416;white-space:nowrap}
+.atividades li:not(:last-child)::after{content:"✱";margin-left:6px;color:var(--amarelo);font-size:.8em;vertical-align:.15em}
+.atividades li small{font-family:var(--mao);font-weight:700;font-size:1rem;text-transform:none;letter-spacing:0;color:#ffe6a8}
 
 /* ---------- comanda em destaque ---------- */
 .comanda-wrap{filter:drop-shadow(0 18px 22px rgba(60,40,10,.26))}
@@ -538,12 +537,11 @@ body.encerrado .so-aberto{display:none!important}
   .hero{grid-column:1 / -1;padding-top:10px}
   .shh{grid-column:1;grid-row:2;margin-top:36px}
   .cardapio{grid-column:1;grid-row:3;margin-top:64px}
-  .atividades{grid-column:1;grid-row:4;margin-top:28px;padding:24px 22px 22px}
-  .atividades h3{font-size:2rem}
-  .atividades li{padding:11px 16px}
-  .atividades li b{font-size:1.1rem}
-  .atividades li span{font-size:1.5rem}
-  .atividades li small{font-size:.85rem;padding-left:2.4rem}
+  .atividades{grid-column:1;grid-row:4;margin-top:36px}
+  .atividades h3{font-size:2.6rem}
+  .atividades li{font-size:1.75rem}
+  .atividades li small{font-size:1.25rem}
+  .atividades{padding:28px 30px 26px}
   .ingresso{grid-column:2;grid-row:4;margin-top:44px}
   .comanda-wrap{grid-column:2;grid-row:2 / span 2;margin-top:36px}
   .assinatura{grid-column:1 / -1;grid-row:5;margin-top:64px}
@@ -725,14 +723,15 @@ body.encerrado .so-aberto{display:none!important}
     </ul>
   </section>
 
-  <section class="atividades">
-    <h3>Incluso na entrada</h3>
+  <section class="atividades" aria-label="Atividades inclusas na entrada">
+    <div class="prego p1"></div><div class="prego p2"></div><div class="prego p3"></div><div class="prego p4"></div>
+    <h3>Tá incluso!</h3>
     <ul>
-      <li><span aria-hidden="true">🛟</span><b data-extra=" (+1,10 m)">Floats</b><small>maiores de 1,10 m</small></li>
-      <li><span aria-hidden="true">⚽</span><b>Futevôlei</b></li>
-      <li><span aria-hidden="true">🎾</span><b>Beach tennis</b></li>
-      <li><span aria-hidden="true">🏐</span><b>Vôlei de praia</b></li>
-      <li class="largo"><span aria-hidden="true">🏝️</span><b>Praia</b></li>
+      <li>Floats <small>(a partir de 1,10 m)</small></li>
+      <li>Futevôlei</li>
+      <li>Beach tennis</li>
+      <li>Vôlei de praia</li>
+      <li>Praia</li>
     </ul>
   </section>
 

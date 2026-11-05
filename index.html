@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Aniversário do Kauê</title>
+<title>Aniversário do Kaue</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Sábado, 21/11, na Chácara Paraíso do Sol. É surpresa: não conte pro Kauê! Confirme sua presença.">
-<meta property="og:title" content="Aniversário surpresa · Kauê, 25">
+<meta name="description" content="Sábado, 21/11, na Chácara Paraíso do Sol. É surpresa: não conte pro Kaue! Confirme sua presença.">
+<meta property="og:title" content="Aniversário surpresa · Kaue, 25">
 <meta property="og:description" content="Sábado, 21/11, na Chácara Paraíso do Sol. Shhh, é surpresa. Confirme sua presença aqui.">
 <meta property="og:image" content="https://immfernanda.github.io/Convitekaue/img/og.jpg">
 <meta property="og:type" content="website">
@@ -181,7 +181,7 @@ main{
 /* topo estilo cartaz */
 .hero{text-align:center;position:relative;padding-top:24px}
 .eyebrow{font-family:var(--placa);font-size:1.25rem;letter-spacing:.12em;text-transform:uppercase;color:var(--azul)}
-h1.nome{margin:.1em 0 0;line-height:.86;font-weight:400;padding-top:.32em} /* espaço pro acento do Ê */
+h1.nome{margin:.1em 0 0;line-height:.86;font-weight:400}
 h1.nome .maria{
   display:block;font-family:var(--chunky);font-size:clamp(3.3rem,16vw,6rem);letter-spacing:.01em;
   color:var(--amarelo);-webkit-text-stroke:2px var(--azul-escuro);paint-order:stroke fill;
@@ -455,14 +455,25 @@ body.encerrado .so-aberto{display:none!important}
 }
 
 
-/* ===== Kauê: bola e figurinha ===== */
-/* bola atravessando a areia, quicando (fica por trás do convite) */
-.bola-areia{position:fixed;z-index:0;pointer-events:none;left:0;top:62vh;width:clamp(30px,7vw,46px);
-  animation:bolaVai 13s linear infinite;animation-delay:-3s}
-.bola-areia svg{display:block;width:100%;height:auto;overflow:visible;
-  filter:drop-shadow(8px 12px 2px rgba(110,80,30,.18));animation:bolaQuica 1.1s cubic-bezier(.4,0,.6,1) infinite,bolaGira 1.4s linear infinite}
-@keyframes bolaVai{from{transform:translateX(-10vw)}to{transform:translateX(110vw)}}
-@keyframes bolaQuica{0%,100%{translate:0 0}50%{translate:0 -38px}}
+/* ===== Kaue: bola e figurinha ===== */
+/* bola fazendo embaixadinha ao lado da cadeira: sobe e desce no mesmo lugar */
+.embaixadinha{position:absolute;bottom:14px;left:50%;transform:translateX(-265%);width:clamp(34px,9vw,46px);height:150px;pointer-events:none}
+.embaixadinha svg{position:absolute;left:0;bottom:0;width:100%;height:auto;overflow:visible;
+  animation:embaixa 1.3s infinite,giraBola 1.3s linear infinite}
+.sombra-bola{position:absolute;left:8%;right:8%;bottom:-4px;height:10px;border-radius:50%;background:rgba(110,80,30,.28);
+  animation:sombraBola 1.3s infinite}
+@keyframes embaixa{
+  0%{translate:0 0;animation-timing-function:cubic-bezier(.2,.7,.4,1)}
+  50%{translate:0 -105px;animation-timing-function:cubic-bezier(.6,0,.8,.3)}
+  100%{translate:0 0}
+}
+@keyframes sombraBola{
+  0%{transform:scale(1);opacity:1;animation-timing-function:cubic-bezier(.2,.7,.4,1)}
+  50%{transform:scale(.45);opacity:.45;animation-timing-function:cubic-bezier(.6,0,.8,.3)}
+  100%{transform:scale(1);opacity:1}
+}
+@keyframes giraBola{to{rotate:360deg}}
+@keyframes embaixaPC{0%{translate:0 0;animation-timing-function:cubic-bezier(.2,.7,.4,1)}50%{translate:0 -150px;animation-timing-function:cubic-bezier(.6,0,.8,.3)}100%{translate:0 0}}
 @keyframes bolaGira{to{rotate:360deg}}
 
 /* comemoração do gol na confirmação */
@@ -520,6 +531,8 @@ body.encerrado .so-aberto{display:none!important}
   .cena .gs{height:350px}
   .cena .cad{height:185px}
   .cena .copo{height:84px}
+  .embaixadinha{width:58px;height:200px}
+  .embaixadinha svg{animation-name:embaixaPC,giraBola}
   .selo-contagem{width:160px;height:160px;top:80px;right:-20px}
   .selo-contagem small{font-size:1.35rem}
   .selo-contagem strong{font-size:4.2rem}
@@ -583,7 +596,6 @@ body.encerrado .so-aberto{display:none!important}
   <div class="halo"></div>
   <svg class="disco" viewBox="-280 -280 560 560"><circle r="66" fill="url(#gDisco)"/></svg>
 </div>
-<div class="bola-areia" aria-hidden="true"><svg viewBox="-50 -50 100 100"><use href="#bola"/></svg></div>
 <div class="gaivota" style="--t:clamp(34px,8vw,54px);--y:38vh;--dur:26s;--delay:-4s" aria-hidden="true"><img src="img/gaivota.png" alt=""></div>
 <div class="gaivota" style="--t:clamp(26px,6vw,42px);--y:72vh;--dur:34s;--delay:-20s" aria-hidden="true"><img src="img/gaivota.png" alt=""></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -655,16 +667,17 @@ body.encerrado .so-aberto{display:none!important}
   <header class="hero" id="hero">
     <div class="eyebrow">Aniversário surpresa</div>
     <h1 class="nome">
-      <span class="maria">KAUÊ</span>
+      <span class="maria">KAUE</span>
     </h1>
     <svg class="risco" viewBox="0 0 240 14" aria-hidden="true"><path d="M4 9 C60 2 120 2 236 7" fill="none" stroke="#e0362c" stroke-width="4" stroke-linecap="round"/></svg>
     <div class="idade">faz <b>25</b> anos</div>
-    <p class="lede">Um sábado de sol, chinelo, piscina e copo americano pra comemorar o Kauê.</p>
+    <p class="lede">Um sábado de sol, chinelo, piscina e copo americano pra comemorar o Kaue.</p>
     <div class="cena">
       <div class="sombra-gs"></div>
       <img class="gs" src="img/guarda-sol.png" alt="">
       <img class="cad" src="img/cadeira-vermelha.png" alt="">
       <img class="copo" src="img/copo.png" alt="">
+      <div class="embaixadinha" aria-hidden="true"><div class="sombra-bola"></div><svg viewBox="-50 -50 100 100"><use href="#bola"/></svg></div>
       <div class="selo-contagem" id="selo"><small>faltam</small><strong id="dias">16</strong><small id="dias-txt">dias</small></div>
     </div>
   </header>
@@ -693,7 +706,7 @@ body.encerrado .so-aberto{display:none!important}
 
   <div class="comanda-wrap" id="comanda">
     <section class="comanda">
-      <div class="cabecalho"><span>Comanda nº 2611</span><span>Mesa do Kauê</span></div>
+      <div class="cabecalho"><span>Comanda nº 2611</span><span>Mesa do Kaue</span></div>
       <span class="carimbo" id="carimbo"></span>
 
       <div id="area-form">
@@ -738,7 +751,7 @@ body.encerrado .so-aberto{display:none!important}
   <div class="figurinha">
     <div class="fig-topo">BRASIL · 21/11</div>
     <img src="img/confirmacao.jpg" alt="">
-    <div class="fig-nome"><b>KAUÊ</b><span>25 anos · presença confirmada</span></div>
+    <div class="fig-nome"><b>KAUE</b><span>25 anos · presença confirmada</span></div>
   </div>
   <div id="bolasGol"></div>
 </div>
@@ -758,7 +771,7 @@ const CONFIG = {
   ENDPOINT: "https://script.google.com/macros/s/AKfycbzP1wiYkuMygi7V2kQms9j3YiY4rReISkCw7g-UJFH-_7Zov0HohUUz2J-hkU-HUe8eBA/exec",
   // Nome da aba da planilha onde as respostas entram
   ABA: "Kaue",
-  NOME_CURTO: "Kauê",
+  NOME_CURTO: "Kaue",
   LOJA: "https://chacaraparaisodosol.com.br/loja/",
   DATA_FESTA: new Date(2026, 10, 21, 9, 0, 0),   // 21/11/2026 9h (mês 0 = janeiro)
   PRAZO_FIM: new Date(2026, 10, 19, 0, 0, 0),    // fecha à meia-noite de 18 para 19/11
@@ -989,7 +1002,7 @@ function brinde(){
 }
 
 
-/* ====== comemoração de gol (Kauê) ====== */
+/* ====== comemoração de gol (Kaue) ====== */
 function gol(){
   const g=document.getElementById("gol"), box=document.getElementById("bolasGol");
   box.innerHTML="";

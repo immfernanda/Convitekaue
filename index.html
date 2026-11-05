@@ -1,0 +1,1011 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aniversário do Kauê</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Sábado, 21/11, na Chácara Paraíso do Sol. É surpresa: não conte pro Kauê! Confirme sua presença.">
+<meta property="og:title" content="Aniversário surpresa · Kauê, 25">
+<meta property="og:description" content="Sábado, 21/11, na Chácara Paraíso do Sol. Shhh, é surpresa. Confirme sua presença aqui.">
+<meta property="og:image" content="https://immfernanda.github.io/Convitekaue/img/og.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f4e4c1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Passion+One:wght@400;700&family=Yellowtail&family=Caveat:wght@600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Praia vista de cima: calçadão de Copacabana | areia com o convite | mar. Letras de cartaz de boteco. */
+:root{
+  color-scheme:light;
+  --areia:#f4e4c1;
+  --areia-molhada:#d8bd88;
+  --azul:#1f4fb4;
+  --azul-escuro:#163a85;
+  --vermelho:#e0362c;
+  --amarelo:#f6c445;
+  --verde:#2fae5a;
+  --turquesa:#5fc9d6;
+  --papel:#fffaf0;
+  --tinta:#1f1b16;
+  --cinza:#7a6a55;
+  --pedra-clara:#f7f3ea;
+  --sombra:rgba(60,40,10,.2);
+  --veu:rgba(20,30,50,.55);
+  --chunky:"Lilita One","Arial Black",Impact,sans-serif;
+  --placa:"Passion One","Arial Narrow",Impact,sans-serif;
+  --script:"Yellowtail","Brush Script MT",cursive;
+  --mao:"Caveat","Comic Sans MS",cursive;
+  --texto:"Outfit",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --w-calcada:clamp(30px,10vw,150px);
+  --w-mar:clamp(64px,21vw,300px);
+  --w-ondas:var(--w-calcada); /* largura só das ondas do calçadão */
+}
+/* tela grande: a orla inteira vista de cima, com a faixa de areia (e o convite) no centro */
+@media (min-width:960px){
+  /* calçadão só como faixa na borda; o resto é areia */
+  :root{--w-calcada:150px;--w-mar:calc((100vw - 760px) / 2)}
+  .calcadao{background-size:60px 120px !important}
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:var(--texto);color:var(--tinta);min-height:100vh;overflow-x:hidden;
+  background-color:var(--areia);
+  background-image:
+    radial-gradient(rgba(150,110,50,.10) 1px,transparent 1.2px),
+    radial-gradient(rgba(255,255,255,.4) 1px,transparent 1.2px);
+  background-size:7px 7px,11px 11px;background-position:0 0,3px 5px;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- calçadão de Copacabana (semicírculos encaixados) ---------- */
+.calcadao{
+  position:fixed;top:0;bottom:0;left:calc(var(--w-calcada) - var(--w-ondas));width:var(--w-ondas);z-index:0;pointer-events:none;
+  background-color:var(--pedra-clara);
+  /* padrão base; o script troca pela versão com mosaico de pedrinhas */
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='400' viewBox='0 0 200 400'%3E%3Cg fill='%23231f20'%3E%3Cpath id='o' d='M100 0A100 100 0 0 0 100 200A100 100 0 0 1 100 400H200A100 100 0 0 0 200 200A100 100 0 0 1 200 0Z'/%3E%3Cuse href='%23o' x='-200'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:48px 96px;background-position:right top;
+}
+/* meio-fio de pedra entre o calçadão e a areia */
+.calcadao::after{
+  content:"";position:absolute;top:0;bottom:0;right:-9px;width:9px;
+  background:
+    repeating-linear-gradient(180deg,transparent 0 58px,rgba(90,80,65,.35) 58px 60px),
+    linear-gradient(90deg,#b9b2a4,#e6e1d6 35%,#d4cdbf 70%,#aea697);
+  box-shadow:5px 0 9px rgba(70,50,20,.18);
+}
+
+/* ---------- mar (desenhado por script) ---------- */
+.mar{position:fixed;top:0;bottom:0;right:0;width:var(--w-mar);z-index:0;pointer-events:none;overflow:hidden}
+.mar img{position:absolute;top:0;left:0;display:block;max-width:none}
+.mar .anim{will-change:transform,opacity}
+/* espuma da beira: sobe e desce na areia */
+.mar .swash{animation:swash 7s ease-in-out infinite}
+@keyframes swash{0%,100%{transform:translateX(0)}50%{transform:translateX(-6px)}}
+/* ondas: nascem no fundo, andam até a beira e somem */
+.mar .crista{animation:chega 7s cubic-bezier(.4,0,.7,1) infinite;opacity:0}
+.mar .c2{animation-delay:-2.33s}
+.mar .c3{animation-delay:-4.66s}
+@keyframes chega{0%{transform:translateX(34px);opacity:0}20%{opacity:.9}75%{opacity:.7}100%{transform:translateX(-6px);opacity:0}}
+.brilhos{position:absolute;inset:0}
+.brilhos i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 6px 2px rgba(255,255,255,.8);opacity:0;animation:cintila 3.2s ease-in-out infinite}
+@keyframes cintila{0%,100%{opacity:0}50%{opacity:.9}}
+
+/* ---------- sol ---------- */
+.sol-wrap{position:fixed;z-index:0;pointer-events:none;width:560px;height:560px;top:-280px;right:calc(var(--w-mar) - 280px)}
+.sol-wrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* gira o elemento inteiro (centro = centro do sol) */
+.sol-wrap .raios-svg{animation:gira 90s linear infinite;transform-origin:50% 50%}
+@keyframes gira{to{transform:rotate(360deg)}}
+.sol-wrap .halo{position:absolute;left:50%;top:50%;width:250px;height:250px;margin:-125px 0 0 -125px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,241,184,.45) 35%,rgba(255,226,138,0) 70%);animation:pulsa 5s ease-in-out infinite}
+.sol-wrap .disco{opacity:.6}
+.sol-wrap .raios-svg,.sol-wrap .halo{opacity:.6}
+@keyframes pulsa{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+
+/* ---------- gaivotas e ciclista ---------- */
+/* gaivotas: voam por trás do convite; a sombra (mesmo formato) cai na areia */
+.gaivota{position:fixed;z-index:0;pointer-events:none;left:0;top:var(--y);width:var(--t);
+  animation:voa var(--dur) linear infinite;animation-delay:var(--delay)}
+.gaivota img{display:block;width:100%;max-width:none;
+  filter:drop-shadow(18px 26px 3px rgba(110,80,30,.11));animation:plana 3.4s ease-in-out infinite alternate}
+@keyframes plana{from{transform:rotate(-4deg) scaleY(1)}to{transform:rotate(3deg) scaleY(.9)}}
+@keyframes voa{
+  from{transform:translate(105vw,0)}
+  to{transform:translate(-40vw,-22vh)}
+}
+/* areia do PC: guarda-sóis e cangas vistos de cima (rolam junto com a página) */
+.areia-deco{position:absolute;left:0;top:0;width:100%;z-index:0;pointer-events:none;display:none}
+.areia-deco > *{position:absolute}
+.areia-deco .gs-cima{width:150px;height:150px;filter:drop-shadow(22px 26px 10px rgba(120,90,40,.22))}
+.areia-deco .canga{width:62px;height:118px;border-radius:2px;
+  background:
+    linear-gradient(115deg,rgba(255,255,255,.18),transparent 45%,rgba(0,0,0,.06)),
+    repeating-linear-gradient(90deg,var(--a) 0 9px,var(--b) 9px 18px);
+  box-shadow:6px 9px 10px rgba(120,90,40,.16)}
+.areia-deco .canga::before,.areia-deco .canga::after{content:"";position:absolute;left:3px;right:3px;height:5px;
+  background:repeating-linear-gradient(90deg,var(--a) 0 1.5px,transparent 1.5px 4px)}
+.areia-deco .canga::before{top:-5px}.areia-deco .canga::after{bottom:-5px}
+.areia-deco .chinelo{width:30px;height:34px}
+body{position:relative}
+@media (min-width:1440px){.areia-deco{display:block}}
+.areia-deco .gs-cima{width:clamp(90px,calc((50vw - var(--meia) - 150px) * .45),150px);height:auto;aspect-ratio:1}
+
+/* gente, bikes e carros vistos de cima (desenhados apontando pra cima) */
+.movel{position:fixed;z-index:1;pointer-events:none;top:0;filter:drop-shadow(3px 4px 1.5px rgba(0,0,0,.16));
+  animation-timing-function:linear;animation-iteration-count:infinite}
+@keyframes sobe{from{transform:translateY(calc(100vh + 90px))}to{transform:translateY(-90px)}}
+@keyframes desce{from{transform:translateY(-90px) rotate(180deg)}to{transform:translateY(calc(100vh + 90px)) rotate(180deg)}}
+.movel .passo{animation:ginga .5s ease-in-out infinite alternate;transform-origin:0 0}
+@keyframes ginga{from{transform:rotate(-7deg)}to{transform:rotate(7deg)}}
+.d{display:none}
+
+/* avenida e ciclovia (só em tela grande) */
+.avenida,.ciclovia{position:fixed;top:0;bottom:0;z-index:0;pointer-events:none;display:none}
+.avenida{
+  left:0;width:calc(var(--w-calcada) - var(--w-ondas) - 40px);
+  background-color:#45484c;
+  background-image:
+    linear-gradient(#e9c13c,#e9c13c),linear-gradient(#e9c13c,#e9c13c),
+    repeating-linear-gradient(180deg,#eeeeea 0 28px,transparent 28px 64px),
+    repeating-linear-gradient(180deg,#eeeeea 0 28px,transparent 28px 64px),
+    radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.3px),
+    radial-gradient(rgba(0,0,0,.18) 1px,transparent 1.3px);
+  background-size:3px 100%,3px 100%,3px 64px,3px 64px,5px 5px,7px 7px;
+  background-position:calc(50% - 4px) 0,calc(50% + 4px) 0,25% 0,75% 0,0 0,2px 3px;
+  background-repeat:no-repeat,no-repeat,repeat-y,repeat-y,repeat,repeat;
+  box-shadow:inset -5px 0 0 #cfc8ba;
+}
+.ciclovia{
+  left:calc(var(--w-calcada) - var(--w-ondas) - 40px);width:40px;
+  background-color:#b8473b;
+  background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.85) 0 16px,transparent 16px 34px);
+  background-size:2px 34px;background-position:50% 0;background-repeat:repeat-y;
+  box-shadow:inset 2px 0 0 rgba(255,255,255,.8),inset -2px 0 0 rgba(255,255,255,.8);
+}
+
+/* ---------- conteúdo ---------- */
+main{
+  position:relative;z-index:1;max-width:560px;margin:0 auto;
+  padding-block:44px 56px;
+  padding-left:max(calc(var(--w-calcada) + 18px),16px,env(safe-area-inset-left,0px));
+  /* o convite fica na areia: no máximo encosta na areia molhada, sem cobrir a água */
+  padding-right:max(calc(var(--w-mar) - 14px),16px,env(safe-area-inset-right,0px));
+}
+@media (min-width:960px){main{padding-left:16px;padding-right:16px}}
+
+.brilho-estrela{position:absolute;width:var(--s);height:var(--s);color:var(--c);pointer-events:none}
+
+/* topo estilo cartaz */
+.hero{text-align:center;position:relative;padding-top:24px}
+.eyebrow{font-family:var(--placa);font-size:1.25rem;letter-spacing:.12em;text-transform:uppercase;color:var(--azul)}
+h1.nome{margin:.1em 0 0;line-height:.86;font-weight:400;padding-top:.32em} /* espaço pro acento do Ê */
+h1.nome .maria{
+  display:block;font-family:var(--chunky);font-size:clamp(3.3rem,16vw,6rem);letter-spacing:.01em;
+  color:var(--amarelo);-webkit-text-stroke:2px var(--azul-escuro);paint-order:stroke fill;
+  text-shadow:4px 4px 0 var(--azul-escuro);
+}
+h1.nome .vitoria{
+  display:block;font-family:var(--script);font-size:clamp(3.2rem,15vw,5.6rem);color:var(--vermelho);
+  transform:rotate(-6deg);margin-top:-.05em;text-shadow:2px 2px 0 rgba(246,196,69,.9);
+}
+.risco{display:block;width:62%;max-width:240px;height:14px;margin:-4px auto 0}
+.idade{
+  display:inline-block;margin-top:14px;font-family:var(--placa);font-weight:700;font-size:1.6rem;letter-spacing:.04em;
+  color:var(--azul);text-transform:uppercase;
+}
+.idade b{color:var(--vermelho);text-shadow:2px 2px 0 var(--amarelo);font-size:1.15em}
+.lede{max-width:330px;margin:10px auto 0;font-size:1.02rem;line-height:1.55;color:#4a3d2c}
+
+/* cena + contagem */
+.cena{position:relative;height:230px;max-width:330px;margin:14px auto 0}
+.cena img{position:absolute;bottom:16px;filter:drop-shadow(8px 10px 6px var(--sombra))}
+.cena .gs{height:210px;left:50%;transform:translateX(-66%)}
+.cena .cad{height:112px;left:50%;transform:translateX(-10%)}
+.cena .copo{height:52px;left:50%;transform:translateX(-126%)}
+.cena .sombra-gs{position:absolute;left:14%;right:24%;bottom:8px;height:22px;border-radius:50%;background:radial-gradient(closest-side,rgba(110,80,30,.28),transparent)}
+.selo-contagem{
+  position:absolute;right:-6px;top:60px;width:104px;height:104px;border-radius:50%;
+  background:var(--vermelho);color:var(--papel);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:var(--placa);text-transform:uppercase;line-height:.9;transform:rotate(10deg);
+  box-shadow:0 0 0 4px var(--papel),0 0 0 6px var(--vermelho),6px 8px 0 rgba(110,80,30,.18);
+  animation:balanca 4s ease-in-out infinite;
+}
+.selo-contagem small{font-size:.95rem;letter-spacing:.08em}
+.selo-contagem strong{font-family:var(--chunky);font-weight:400;font-size:2.6rem;color:var(--amarelo);line-height:.95}
+@keyframes balanca{0%,100%{transform:rotate(10deg)}50%{transform:rotate(4deg)}}
+
+/* surpresa */
+.shh{
+  margin:28px auto 0;background:rgba(255,250,240,.82);border:2px dashed var(--vermelho);
+  border-radius:4px;padding:24px 18px 18px;text-align:center;position:relative;
+}
+.shh .tag{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%) rotate(-3deg);
+  background:var(--vermelho);color:var(--papel);padding:2px 14px;border-radius:2px;
+  font-family:var(--placa);font-size:1.15rem;letter-spacing:.12em;
+}
+.shh strong{display:block;font-family:var(--chunky);font-weight:400;font-size:1.55rem;color:var(--azul);line-height:1.05}
+.shh p{margin:8px 0 0;color:#4a3d2c;line-height:1.5;font-size:.95rem}
+
+/* cardápio (estilo placa de bebidas) */
+.cardapio{
+  margin-top:40px;background:var(--papel);border-radius:3px;padding:26px 18px 20px;position:relative;
+  box-shadow:0 14px 30px var(--sombra);
+}
+.cardapio h2{
+  position:relative;margin:-58px auto 14px;width:max-content;max-width:100%;
+  font-family:var(--chunky);font-weight:400;font-size:2.3rem;letter-spacing:.02em;color:var(--vermelho);
+  transform:skewX(-8deg);padding:18px 38px;
+  -webkit-text-stroke:2px var(--azul-escuro);paint-order:stroke fill;
+  text-shadow:3px 3px 0 var(--azul-escuro);
+}
+/* bandeirinha amarela com contorno azul-escuro (losango por trás de outro losango) */
+.cardapio h2::before,.cardapio h2::after{content:"";position:absolute;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);transform:skewX(8deg)}
+.cardapio h2::after{inset:0 -6px;background:var(--azul-escuro);z-index:-2}
+.cardapio h2::before{inset:4px 0;background:#fff36b;z-index:-1}
+.linhas{list-style:none;margin:0;padding:0}
+.linhas li{
+  display:flex;align-items:baseline;gap:8px;padding:9px 0 7px;
+  border-bottom:3px dotted var(--turquesa);
+  font-family:var(--placa);font-weight:700;font-size:1.45rem;text-transform:uppercase;color:var(--vermelho);
+  text-shadow:1.5px 1.5px 0 rgba(246,196,69,.7);line-height:1;
+}
+/* asterisco desenhado (o caractere vira emoji no iPhone) */
+.linhas li::before{content:"";flex:none;width:14px;height:14px;align-self:center;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-10 -10 20 20'%3E%3Cg stroke='%232fae5a' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M0-8V8M-8 0H8M-5.6-5.6 5.6 5.6M-5.6 5.6 5.6-5.6'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+.linhas li span{flex:1;min-width:0}
+.linhas li em{font-style:normal;white-space:nowrap}
+.endereco{margin:14px 0 0;text-align:center;font-size:.9rem;line-height:1.5;color:var(--cinza)}
+.endereco a{color:var(--azul);font-weight:600}
+.rodape{margin-top:22px}
+.cardapio .linhas li:last-child{border-bottom:none}
+
+/* ingresso */
+.ingresso{
+  margin-top:22px;background:var(--azul);color:var(--papel);border-radius:4px;padding:20px 18px;text-align:center;
+  box-shadow:6px 8px 0 rgba(22,58,133,.25);
+}
+.ingresso h3{margin:0;font-family:var(--placa);font-weight:700;font-size:1.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--amarelo)}
+.ingresso p{margin:8px 0 14px;line-height:1.5;font-size:.97rem}
+.btn-ingresso{
+  display:inline-block;background:var(--amarelo);color:var(--azul-escuro);text-decoration:none;
+  font-family:var(--placa);font-weight:700;font-size:1.3rem;letter-spacing:.05em;text-transform:uppercase;
+  padding:12px 20px;border-radius:3px;box-shadow:0 4px 0 #c99a1e;
+}
+.btn-ingresso:active{transform:translateY(3px);box-shadow:0 1px 0 #c99a1e}
+.btn-ingresso:focus-visible{outline:3px solid var(--papel);outline-offset:3px}
+.ingresso small{display:block;margin-top:10px;opacity:.8;font-size:.8rem}
+
+/* ---------- comanda ---------- */
+.comanda-wrap{position:relative;margin-top:40px;filter:drop-shadow(0 16px 18px var(--sombra))}
+.comanda{
+  position:relative;background-color:var(--papel);color:var(--tinta);
+  padding:30px 22px 32px;
+  background-image:repeating-linear-gradient(transparent 0 31px,#ebe1cd 31px 32px);
+  background-position:0 54px;
+  -webkit-mask:
+    radial-gradient(circle 7px at 50% 0,transparent 98%,#000) top/18px 51% repeat-x,
+    radial-gradient(circle 7px at 50% 100%,transparent 98%,#000) bottom/18px 51% repeat-x;
+          mask:
+    radial-gradient(circle 7px at 50% 0,transparent 98%,#000) top/18px 51% repeat-x,
+    radial-gradient(circle 7px at 50% 100%,transparent 98%,#000) bottom/18px 51% repeat-x;
+}
+.comanda::before{content:"";position:absolute;left:0;right:0;top:16px;border-top:2px dashed #e3d6bd}
+.medalhao{
+  position:absolute;left:50%;top:-64px;transform:translateX(-50%);z-index:3;
+  width:116px;height:136px;border-radius:50%;
+  border:3px solid var(--amarelo);box-shadow:0 0 0 6px var(--papel),0 10px 20px var(--sombra);
+  background:var(--turquesa);overflow:hidden;
+}
+.medalhao img{width:100%;height:100%;object-fit:cover}
+.medalhao img.fallback{object-fit:contain;padding:18px}
+.cabecalho{
+  display:flex;justify-content:space-between;align-items:baseline;gap:8px;
+  font-family:var(--placa);font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase;color:var(--vermelho);white-space:nowrap;
+  border-bottom:2px solid var(--vermelho);padding-bottom:6px;margin-bottom:14px;
+}
+.anota{font-family:var(--mao);font-size:1.5rem;color:#2b3a8a;margin:0;line-height:32px}
+.comanda h2{font-family:var(--chunky);font-weight:400;font-size:1.75rem;text-align:center;margin:10px 0 0;color:var(--azul);line-height:1.05}
+.prazo{text-align:center;font-family:var(--placa);font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--vermelho);margin:6px 0 18px}
+
+.escolha{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.escolha button{
+  font-family:var(--placa);font-weight:700;font-size:1.25rem;letter-spacing:.04em;text-transform:uppercase;
+  padding:12px 6px;border-radius:3px;cursor:pointer;
+  border:2px solid var(--azul);background:transparent;color:var(--azul);transition:background .2s,color .2s;
+}
+.escolha button:focus-visible,.enviar:focus-visible{outline:3px solid var(--amarelo);outline-offset:2px}
+.escolha button[aria-pressed="true"].sim{background:var(--azul);color:var(--papel)}
+.escolha button[aria-pressed="true"].nao{background:var(--tinta);border-color:var(--tinta);color:var(--papel)}
+
+.campo{margin-bottom:14px}
+.campo label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px}
+.campo input{
+  width:100%;font:inherit;font-size:16px;padding:12px 13px;border-radius:3px;
+  border:1px solid #d6cab2;background:#fff;color:var(--tinta);
+}
+.campo input:focus{outline:none;border-color:var(--azul);box-shadow:0 0 0 3px rgba(31,79,180,.15)}
+.campo.erro input{border-color:var(--vermelho)}
+.msg-erro{color:var(--vermelho);font-size:.84rem;margin-top:4px;display:none}
+.campo.erro .msg-erro{display:block}
+
+.enviar{
+  width:100%;font-family:var(--placa);font-weight:700;font-size:1.45rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:13px;border-radius:3px;border:none;cursor:pointer;
+  background:var(--vermelho);color:#fff;margin-top:6px;box-shadow:0 4px 0 #a82219;transition:opacity .2s;
+}
+.enviar:active{transform:translateY(3px);box-shadow:0 1px 0 #a82219}
+.enviar:disabled{opacity:.6;cursor:wait}
+.nota{font-size:.8rem;color:var(--cinza);text-align:center;margin:14px 0 0}
+.falha{color:var(--vermelho);font-size:.88rem;text-align:center;margin:10px 0 0}
+
+.sucesso{text-align:center;padding:4px 0 6px}
+.sucesso h2{margin-bottom:8px}
+.sucesso p{font-size:1rem;line-height:1.55}
+.sucesso .proximo{background:#eef3ff;border-radius:4px;padding:14px 12px;margin-top:14px}
+.sucesso .proximo p{margin:0 0 10px;font-weight:500}
+.sucesso .lembrete{border-top:1px solid #e3d8c3;padding-top:14px;margin-top:16px;font-size:.92rem;color:var(--cinza)}
+.sucesso a.btn-link{display:inline-block;margin-top:12px;color:var(--azul);font-weight:600;font-size:.9rem}
+
+/* carimbo */
+.carimbo{
+  position:absolute;right:14px;top:96px;z-index:5;pointer-events:none;
+  font-family:var(--placa);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:1.5rem;
+  color:var(--c);border:3px solid var(--c);border-radius:4px;padding:2px 12px;
+  transform:rotate(-12deg) scale(2.4);opacity:0;mix-blend-mode:multiply;
+}
+.carimbo.bate{animation:carimba .45s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes carimba{to{transform:rotate(-12deg) scale(1);opacity:.85}}
+
+/* fim */
+.pegadas{display:flex;flex-direction:column;align-items:center;gap:10px;margin:48px 0 0}
+.pegadas span{width:9px;height:15px;border-radius:50%;background:rgba(150,110,50,.22)}
+.pegadas span:nth-child(odd){transform:translateX(-9px) rotate(-8deg)}
+.pegadas span:nth-child(even){transform:translateX(9px) rotate(8deg)}
+.assinatura{text-align:center;font-family:var(--script);font-size:2.4rem;margin:44px 0 0;color:var(--vermelho);transform:rotate(-4deg)}
+
+/* brinde */
+.brinde{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .4s}
+.brinde.ativo{opacity:1;background:rgba(20,30,50,.35)}
+.brinde .par{position:relative;width:240px;height:200px}
+.brinde img{position:absolute;bottom:0;height:150px;filter:drop-shadow(0 10px 14px rgba(0,0,0,.35))}
+.brinde .c1{left:-40vw}
+.brinde .c2{right:-40vw;transform:scaleX(-1)}
+.brinde.ativo .c1{animation:entraE 1.1s cubic-bezier(.3,1.2,.5,1) forwards}
+.brinde.ativo .c2{animation:entraD 1.1s cubic-bezier(.3,1.2,.5,1) forwards}
+@keyframes entraE{0%{left:-40vw;transform:rotate(0)}70%{left:38px;transform:rotate(14deg)}100%{left:30px;transform:rotate(10deg)}}
+@keyframes entraD{0%{right:-40vw;transform:scaleX(-1) rotate(0)}70%{right:38px;transform:scaleX(-1) rotate(14deg)}100%{right:30px;transform:scaleX(-1) rotate(10deg)}}
+.brinde .timtim{position:absolute;left:-40px;right:-40px;top:-46px;text-align:center;font-family:var(--script);font-size:3rem;color:var(--amarelo);opacity:0;transform:translateY(10px);text-shadow:2px 2px 0 var(--vermelho)}
+.brinde.ativo .timtim{animation:aparece .5s .8s forwards}
+@keyframes aparece{to{opacity:1;transform:translateY(0)}}
+.gota{position:absolute;left:50%;top:40px;border-radius:50%;background:#fff8e6;opacity:0}
+.brinde.ativo .gota{animation:espirra .9s .75s ease-out forwards}
+@keyframes espirra{0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--x),var(--y))}}
+
+/* cachorro do "não" */
+.palco{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .5s ease;padding:20px}
+.palco.ativo{opacity:1;pointer-events:auto;background:var(--veu)}
+.palco .dog{width:min(58vw,260px);transform:translateY(80px);transition:transform .6s cubic-bezier(.2,1.3,.4,1);filter:drop-shadow(0 14px 20px rgba(0,0,0,.45))}
+.palco.ativo .dog{transform:translateY(0)}
+.balao{position:relative;max-width:320px;background:var(--papel);color:var(--tinta);border-radius:4px;padding:14px 18px;font-weight:500;font-size:1.02rem;line-height:1.45;text-align:center;margin-bottom:18px;box-shadow:0 10px 30px rgba(0,0,0,.3);opacity:0;transform:translateY(8px);transition:all .4s .35s}
+.balao::after{content:"";position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);border:10px solid transparent;border-top-color:var(--papel);border-bottom:0}
+.palco.ativo .balao{opacity:1;transform:translateY(0)}
+.palco .fechar{margin-top:14px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#e8e1d2}
+
+body.encerrado .so-aberto{display:none!important}
+
+/* celular: letras menores pra caber tudo */
+@media (max-width:480px){
+  .eyebrow{font-size:1.02rem}
+  .idade{font-size:1.35rem}
+  .lede{font-size:.88rem;max-width:280px}
+  .shh{padding:20px 14px 14px}
+  .shh strong{font-size:1.3rem}
+  .shh p{font-size:.84rem}
+  .cardapio{padding:24px 14px 16px}
+  .cardapio h2{font-size:1.9rem;-webkit-text-stroke:1.2px var(--azul-escuro);text-shadow:2px 2px 0 var(--azul-escuro)}
+  .linhas li{font-size:1.12rem;gap:6px}
+  .linhas li::before{width:11px;height:11px}
+  .endereco{font-size:.8rem}
+  .ingresso{padding:16px 14px}
+  .ingresso h3{font-size:1.3rem}
+  .ingresso p{font-size:.86rem;margin:6px 0 12px}
+  .btn-ingresso{font-size:1.05rem;padding:10px 14px}
+  .ingresso small{font-size:.72rem}
+  .comanda{padding:28px 16px 28px}
+  .cabecalho{font-size:.9rem}
+  .comanda h2{font-size:1.45rem}
+  .escolha button{font-size:1.05rem;padding:11px 4px}
+  .enviar{font-size:1.2rem}
+  .nota{font-size:.74rem}
+}
+@media (max-width:400px){
+  .selo-contagem{width:92px;height:92px;right:-10px}
+  .selo-contagem strong{font-size:2.2rem}
+}
+/* ---------- comanda em destaque ---------- */
+.comanda-wrap{filter:drop-shadow(0 18px 22px rgba(60,40,10,.26))}
+/* fita adesiva segurando a comanda */
+.comanda-wrap::before{
+  content:"";position:absolute;z-index:4;top:-14px;left:50%;width:120px;height:30px;
+  transform:translateX(-50%) rotate(-3deg);
+  background:linear-gradient(90deg,rgba(255,255,255,.25),rgba(255,255,255,0) 30%,rgba(255,255,255,.2)),rgba(246,196,69,.82);
+  clip-path:polygon(0 8%,4% 0,8% 10%,12% 0,100% 0,100% 92%,96% 100%,92% 90%,88% 100%,0 100%);
+}
+.comanda h2 span{background:linear-gradient(transparent 58%,rgba(246,196,69,.6) 58%,rgba(246,196,69,.6) 92%,transparent 92%);padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.escolha button{border-width:2.5px;background:#fff;box-shadow:0 3px 0 rgba(31,79,180,.25)}
+.escolha button:hover{background:#eef3ff}
+.campo input{border:1.5px solid #c9b48c}
+@media (min-width:960px){
+  .comanda-wrap{transform:rotate(-1deg);filter:drop-shadow(0 26px 30px rgba(60,40,10,.3))}
+  .comanda-wrap::before{width:150px;height:36px;top:-18px}
+  .comanda{padding:44px 34px 40px;background-position:0 70px}
+  .cabecalho{font-size:1.3rem}
+  .anota{font-size:1.9rem;line-height:40px}
+  .comanda h2{font-size:2.5rem}
+  .prazo{font-size:1.3rem}
+  .escolha button{font-size:1.55rem;padding:16px 8px}
+  .campo label{font-size:1.05rem}
+  .campo input{font-size:18px;padding:15px 16px}
+  .enviar{font-size:1.85rem;padding:16px}
+  .nota{font-size:.9rem}
+}
+
+/* ================= COMPUTADOR =================
+   Convite grande em duas colunas: topo ocupando tudo; à esquerda surpresa + rolê + ingresso,
+   à direita a comanda. O mar fica um pouco mais estreito para sobrar areia. */
+:root{--meia:280px}
+@media (min-width:1360px){
+  :root{--w-mar:max(200px,calc((100vw - 1140px) / 2));--meia:500px}
+  main{
+    max-width:min(1000px,calc(100vw - 2 * var(--w-mar) - 40px));
+    padding-left:16px;padding-right:16px;padding-block:56px 72px;
+    display:grid;grid-template-columns:1fr 1fr;column-gap:56px;align-items:start;
+  }
+  .hero{grid-column:1 / -1;padding-top:10px}
+  .shh{grid-column:1;grid-row:2;margin-top:36px}
+  .cardapio{grid-column:1;grid-row:3;margin-top:64px}
+  .ingresso{grid-column:1;grid-row:4;margin-top:28px}
+  .comanda-wrap{grid-column:2;grid-row:2 / span 3;margin-top:36px}
+  .assinatura{grid-column:1 / -1;grid-row:5;margin-top:64px}
+  .rodape{grid-column:1 / -1;grid-row:6}
+
+  .eyebrow{font-size:1.9rem;letter-spacing:.16em}
+  h1.nome .maria{font-size:9rem;-webkit-text-stroke:3px var(--azul-escuro);text-shadow:7px 7px 0 var(--azul-escuro)}
+  h1.nome .vitoria{font-size:8rem;text-shadow:3px 3px 0 rgba(246,196,69,.9)}
+  .risco{max-width:400px;height:22px;margin-top:-2px}
+  .idade{font-size:2.6rem;margin-top:22px}
+  .lede{font-size:1.3rem;max-width:560px;margin-top:14px}
+  .cena{height:380px;max-width:560px;margin-top:20px}
+  .cena .gs{height:350px}
+  .cena .cad{height:185px}
+  .cena .copo{height:84px}
+  .selo-contagem{width:160px;height:160px;top:80px;right:-20px}
+  .selo-contagem small{font-size:1.35rem}
+  .selo-contagem strong{font-size:4.2rem}
+  .brilho-estrela{transform:scale(1.6)}
+
+  .shh{padding:30px 26px 24px}
+  .shh .tag{font-size:1.4rem}
+  .shh strong{font-size:2.1rem}
+  .shh p{font-size:1.1rem}
+  .cardapio{padding:34px 26px 26px}
+  .cardapio h2{font-size:3.2rem;margin-top:-76px;padding:22px 48px}
+  .linhas li{font-size:2rem;padding:12px 0 10px}
+  .linhas li::before{width:18px;height:18px}
+  .ingresso{padding:26px 24px}
+  .ingresso h3{font-size:2.1rem}
+  .ingresso p{font-size:1.1rem}
+  .btn-ingresso{font-size:1.55rem;padding:14px 26px}
+  .ingresso small{font-size:.9rem}
+
+  .comanda{padding:40px 32px 40px;background-position:0 64px}
+  .cabecalho{font-size:1.35rem}
+  .anota{font-size:1.9rem;line-height:40px}
+  .comanda h2{font-size:2.5rem}
+  .prazo{font-size:1.35rem}
+  .escolha button{font-size:1.6rem;padding:16px 8px}
+  .campo label{font-size:1.05rem}
+  .campo input{font-size:18px;padding:15px 16px}
+  .enviar{font-size:1.9rem;padding:16px}
+  .nota{font-size:.9rem}
+  .carimbo{font-size:2rem;top:120px}
+  .assinatura{font-size:3.6rem}
+  .rodape{font-size:1rem}
+}
+@media (min-width:1360px) and (max-width:1699px){
+  .areia-deco{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01s!important;animation-iteration-count:1!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="calcadao" aria-hidden="true"></div>
+<div class="sol-wrap" aria-hidden="true">
+  <svg class="raios-svg" viewBox="-280 -280 560 560">
+    <defs>
+      <radialGradient id="gRaio" r="1" cx="0" cy="0" gradientUnits="userSpaceOnUse" gradientTransform="scale(280)">
+        <stop offset=".2" stop-color="#ffc93d" stop-opacity=".5"/>
+        <stop offset=".6" stop-color="#ffd25a" stop-opacity=".2"/>
+        <stop offset="1" stop-color="#ffd76a" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="gHalo"><stop offset=".35" stop-color="#fff1b8" stop-opacity=".9"/><stop offset="1" stop-color="#ffe28a" stop-opacity="0"/></radialGradient>
+      <radialGradient id="gDisco" cx=".42" cy=".4"><stop offset="0" stop-color="#fffbe8"/><stop offset=".55" stop-color="#ffe07a"/><stop offset="1" stop-color="#f6b62e"/></radialGradient>
+    </defs>
+    <g id="raios"></g>
+  </svg>
+</div>
+<div class="mar" id="mar" aria-hidden="true"></div>
+<div class="sol-wrap" aria-hidden="true">
+  <div class="halo"></div>
+  <svg class="disco" viewBox="-280 -280 560 560"><circle r="66" fill="url(#gDisco)"/></svg>
+</div>
+<div class="gaivota" style="--t:clamp(34px,8vw,54px);--y:38vh;--dur:26s;--delay:-4s" aria-hidden="true"><img src="img/gaivota.png" alt=""></div>
+<div class="gaivota" style="--t:clamp(26px,6vw,42px);--y:72vh;--dur:34s;--delay:-20s" aria-hidden="true"><img src="img/gaivota.png" alt=""></div>
+<div id="movimento" aria-hidden="true"></div>
+<div class="areia-deco" id="areiaDeco" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- ciclista visto de cima, apontando pra cima -->
+    <g id="bike">
+      <rect x="-1.4" y="-22" width="2.8" height="12" rx="1.4" fill="#222"/>
+      <rect x="-1.4" y="10" width="2.8" height="12" rx="1.4" fill="#222"/>
+      <rect x="-.8" y="-12" width="1.6" height="24" style="fill:var(--quadro,#d22)"/>
+      <rect x="-7" y="-13" width="14" height="1.8" rx=".9" fill="#333"/>
+      <path d="M-5 -1 L-6.2 -12 M5 -1 L6.2 -12" style="stroke:var(--pele,#c98d5a)" stroke-width="1.8" stroke-linecap="round"/>
+      <ellipse cx="0" cy="1" rx="7" ry="4.5" style="fill:var(--camisa,#f6c445)"/>
+      <circle cx="0" cy="-1.5" r="3.6" style="fill:var(--capacete,#e0362c)"/>
+      <path d="M-2 -3 h4" stroke="#fff" stroke-width=".7"/>
+    </g>
+    <!-- pessoa caminhando vista de cima -->
+    <g id="pessoa">
+      <g class="passo">
+        <ellipse cx="-6.6" cy="1" rx="1.7" ry="2.6" style="fill:var(--pele,#c98d5a)"/>
+        <ellipse cx="6.6" cy="1" rx="1.7" ry="2.6" style="fill:var(--pele,#c98d5a)"/>
+        <ellipse cx="0" cy="0.5" rx="6.2" ry="3.6" style="fill:var(--camisa,#2fae5a)"/>
+      </g>
+      <circle cx="0" cy="-.2" r="3.1" style="fill:var(--cabelo,#3a2a1e)"/>
+    </g>
+    <!-- carro visto de cima -->
+    <g id="carro">
+      <rect x="-10" y="-22" width="20" height="44" rx="6" style="fill:var(--cor,#e0362c)"/>
+      <rect x="-8.2" y="-12" width="16.4" height="7" rx="2.5" fill="#22303c" opacity=".9"/>
+      <rect x="-7.6" y="-4.5" width="15.2" height="13" rx="2" fill="#fff" opacity=".14"/>
+      <rect x="-8" y="10" width="16" height="5" rx="2" fill="#22303c" opacity=".85"/>
+      <rect x="-8" y="-22" width="4" height="2" rx="1" fill="#fff6c8"/>
+      <rect x="4" y="-22" width="4" height="2" rx="1" fill="#fff6c8"/>
+      <rect x="-8" y="20.4" width="4" height="1.6" fill="#ff3b30"/>
+      <rect x="4" y="20.4" width="4" height="1.6" fill="#ff3b30"/>
+    </g>
+    <g id="ave">
+      <g class="asas">
+        <path d="M-2 -1 C-10 -9 -20 -9 -29 -3 C-20 -4 -11 -1 -3 4Z" fill="#fff" stroke="#aeb7bf" stroke-width=".7"/>
+        <path d="M-23 -6 C-26 -5 -28 -4 -29 -3 C-27 -3.3 -24 -3.6 -21 -3.2Z" fill="#33393f"/>
+        <path d="M2 -1 C10 -9 20 -9 29 -3 C20 -4 11 -1 3 4Z" fill="#fff" stroke="#aeb7bf" stroke-width=".7"/>
+        <path d="M23 -6 C26 -5 28 -4 29 -3 C27 -3.3 24 -3.6 21 -3.2Z" fill="#33393f"/>
+      </g>
+      <ellipse cx="0" cy="1" rx="3" ry="8.5" fill="#fff" stroke="#aeb7bf" stroke-width=".7"/>
+      <path d="M0 -7.5 l-1.1 -2.6 h2.2Z" fill="#f2b632"/>
+      <path d="M-2.4 8.5 L0 13 L2.4 8.5Z" fill="#dfe4e8"/>
+    </g>
+  </defs>
+</svg>
+
+<main>
+  <header class="hero" id="hero">
+    <div class="eyebrow">Aniversário surpresa</div>
+    <h1 class="nome">
+      <span class="maria">KAUÊ</span>
+    </h1>
+    <svg class="risco" viewBox="0 0 240 14" aria-hidden="true"><path d="M4 9 C60 2 120 2 236 7" fill="none" stroke="#e0362c" stroke-width="4" stroke-linecap="round"/></svg>
+    <div class="idade">faz <b>25</b> anos</div>
+    <p class="lede">Um sábado de sol, chinelo, piscina e copo americano pra comemorar o Kauê.</p>
+    <div class="cena">
+      <div class="sombra-gs"></div>
+      <img class="gs" src="img/guarda-sol.png" alt="">
+      <img class="cad" src="img/cadeira-vermelha.png" alt="">
+      <img class="copo" src="img/copo.png" alt="">
+      <div class="selo-contagem" id="selo"><small>faltam</small><strong id="dias">16</strong><small id="dias-txt">dias</small></div>
+    </div>
+  </header>
+
+  <section class="shh" role="note">
+    <span class="tag">SHHH!</span>
+    <strong>Ele não sabe de nada.</strong>
+    <p>Nada de comentar, dar indireta ou postar antes da hora. Bico fechado até o dia 21.</p>
+  </section>
+
+  <section class="cardapio">
+    <h2>O ROLÊ</h2>
+    <ul class="linhas">
+      <li><span>Quando</span><em>Sáb, 21/11</em></li>
+      <li><span>Horário</span><em>9h às 18h</em></li>
+      <li><span>Day use</span><em>R$ 50,00</em></li>
+    </ul>
+  </section>
+
+  <section class="ingresso">
+    <h3>Garanta seu ingresso</h3>
+    <p>O day use não está incluso. Cada convidado compra o seu direto no site da chácara, escolhendo o dia <strong>21/11</strong>.</p>
+    <a class="btn-ingresso" href="https://chacaraparaisodosol.com.br/loja/" target="_blank" rel="noopener">Comprar no site da chácara</a>
+    <small>Valor consultado em 05/11: R$ 50 por pessoa. Pode mudar até o dia.</small>
+  </section>
+
+  <div class="comanda-wrap" id="comanda">
+    <section class="comanda">
+      <div class="cabecalho"><span>Comanda nº 2611</span><span>Mesa do Kauê</span></div>
+      <span class="carimbo" id="carimbo"></span>
+
+      <div id="area-form">
+        <p class="anota so-aberto">Garçom, anota aí:</p>
+        <h2 id="titulo-form"><span>Confirme sua presença</span></h2>
+        <p class="prazo so-aberto">até 18 de novembro</p>
+
+        <form id="form" class="so-aberto" novalidate>
+          <div class="escolha" role="group" aria-label="Você vai?">
+            <button type="button" class="sim" data-v="sim" aria-pressed="false">Tô dentro</button>
+            <button type="button" class="nao" data-v="nao" aria-pressed="false">Não poderei</button>
+          </div>
+          <div class="campo" id="c-presenca"><div class="msg-erro">Escolha uma das opções acima</div></div>
+
+          <div class="campo" id="c-nome">
+            <label for="nome">Nome e sobrenome</label>
+            <input id="nome" name="nome" autocomplete="name" placeholder="Ex.: Ana Souza">
+            <div class="msg-erro">Coloque nome e sobrenome, por favor</div>
+          </div>
+
+          <button type="submit" class="enviar" id="btn-enviar">Fechar a comanda</button>
+          <p class="nota">Seu nome é usado só para a organização da festa.</p>
+          <p class="falha" id="falha" hidden>Não consegui enviar agora. Confira sua internet e tente de novo.</p>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <p class="assinatura">Te esperamos lá!</p>
+  <footer class="endereco rodape"><strong>Chácara Paraíso do Sol</strong><br>Estr. do Galarda, 818 · Jd. Santa Nely · Campo Largo/PR<br>
+    <a href="https://maps.google.com/?q=Ch%C3%A1cara+Para%C3%ADso+do+Sol+Estrada+do+Galarda+818+Campo+Largo" target="_blank" rel="noopener">Abrir no mapa</a> · <a href="https://www.instagram.com/chacara.paraisodosol/" target="_blank" rel="noopener">Instagram</a></footer>
+</main>
+
+<div class="palco" id="palco" aria-live="polite">
+  <div class="balao" id="balao"></div>
+  <img class="dog" src="img/dog.png" alt="Cachorro de óculos escuros">
+  <div class="fechar">toque para fechar</div>
+</div>
+
+<div class="brinde" id="brinde" aria-hidden="true">
+  <div class="par">
+    <div class="timtim">Tim-tim!</div>
+    <img class="c1" src="img/copo.png" alt="">
+    <img class="c2" src="img/copo.png" alt="">
+    <div id="gotas"></div>
+  </div>
+</div>
+
+<script>
+/* ====== CONFIGURAÇÃO ====== */
+const CONFIG = {
+  // URL do Google Apps Script terminando em /exec (vazio = não envia, só testa)
+  ENDPOINT: "https://script.google.com/macros/s/AKfycbzP1wiYkuMygi7V2kQms9j3YiY4rReISkCw7g-UJFH-_7Zov0HohUUz2J-hkU-HUe8eBA/exec",
+  // Nome da aba da planilha onde as respostas entram
+  ABA: "Kaue",
+  NOME_CURTO: "Kauê",
+  LOJA: "https://chacaraparaisodosol.com.br/loja/",
+  DATA_FESTA: new Date(2026, 10, 21, 9, 0, 0),   // 21/11/2026 9h (mês 0 = janeiro)
+  PRAZO_FIM: new Date(2026, 10, 19, 0, 0, 0),    // fecha à meia-noite de 18 para 19/11
+  FRASE_NAO: "Vai perder? Então sobra mais cerveja pra mim.",
+  FRASE_ENCERRADO: "A comanda já fechou: as confirmações iam até 18/11. Fala direto com quem te mandou o convite."
+};
+const SVGNS="http://www.w3.org/2000/svg";
+
+/* ====== raios do sol ====== */
+(function(){
+  const g=document.getElementById("raios");
+  const n=28;
+  for(let i=0;i<n;i++){
+    const a=i/n*Math.PI*2, longo=i%2===0;
+    const r0=78, r1=longo?275:190, larg=longo?.055:.04;
+    const p=[[Math.cos(a-larg)*r0,Math.sin(a-larg)*r0],[Math.cos(a)*r1,Math.sin(a)*r1],[Math.cos(a+larg)*r0,Math.sin(a+larg)*r0]];
+    const el=document.createElementNS(SVGNS,"polygon");
+    el.setAttribute("points",p.map(q=>q.map(v=>v.toFixed(1)).join(",")).join(" "));
+    el.setAttribute("fill","url(#gRaio)");
+    g.appendChild(el);
+  }
+})();
+
+/* ====== estrelinhas do cartaz ====== */
+(function(){
+  const hero=document.getElementById("hero");
+  const cores=["#e0362c","#1f4fb4","#f6c445"];
+  const pos=[[4,8,18],[88,2,14],[2,34,12],[92,30,20],[10,58,10],[84,52,12]];
+  pos.forEach(([x,y,s],i)=>{
+    const sv=document.createElementNS(SVGNS,"svg");
+    sv.setAttribute("viewBox","-10 -10 20 20");sv.setAttribute("class","brilho-estrela");sv.setAttribute("aria-hidden","true");
+    sv.style.left=x+"%";sv.style.top=y+"%";sv.style.setProperty("--s",s+"px");sv.style.setProperty("--c",cores[i%3]);
+    sv.innerHTML='<path d="M0-10 Q1.5-1.5 10 0 Q1.5 1.5 0 10 Q-1.5 1.5 -10 0 Q-1.5-1.5 0-10Z" fill="currentColor"/>';
+    hero.appendChild(sv);
+  });
+})();
+
+/* ====== calçadão com mosaico de pedras portuguesas ====== */
+(function(){
+  const s=`<svg xmlns="http://www.w3.org/2000/svg" width="200" height="400" viewBox="0 0 200 400">
+    <defs>
+      <filter id="rejunte" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="turbulence" baseFrequency="0.16" numOctaves="1" seed="11" stitchTiles="stitch"/>
+        <feColorMatrix values="0 0 0 0 .55  0 0 0 0 .52  0 0 0 0 .47  0 0 0 -5 1.05"/>
+      </filter>
+      <filter id="tom" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="4" stitchTiles="stitch"/>
+        <feColorMatrix values="0 0 0 0 .5  0 0 0 0 .45  0 0 0 0 .38  0 0 0 .9 -.3"/>
+      </filter>
+    </defs>
+    <rect width="200" height="400" fill="#f1ece1"/>
+    <g fill="#262223"><path id="o" d="M100 0A100 100 0 0 0 100 200A100 100 0 0 1 100 400H200A100 100 0 0 0 200 200A100 100 0 0 1 200 0Z"/><use href="#o" x="-200"/></g>
+    <rect width="200" height="400" filter="url(#tom)" opacity=".35"/>
+    <rect width="200" height="400" filter="url(#rejunte)" opacity=".75"/>
+  </svg>`;
+  document.querySelector(".calcadao").style.backgroundImage=`url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(s)}")`;
+})();
+
+/* ====== gente, bikes e carros ======
+   m = só celular (no calçadão) · d = só tela grande (avenida, ciclovia e calçadão) */
+(function(){
+  const ondas="(var(--w-calcada) - var(--w-ondas))";           // começo do calçadão
+  const noCalc=f=>`calc(${ondas} + var(--w-ondas) * ${f} - 9px)`;
+  const ciclo=dx=>`calc(${ondas} - 40px + ${dx}px)`;
+  const larg="(var(--w-calcada) - var(--w-ondas) - 40px)";     // largura da avenida
+  const carroW=`min(30px, calc(${larg} * .17))`;
+  const pista=f=>`calc(${larg} * ${f} - ${carroW} / 2)`;
+  const camisas=["#f6c445","#1f4fb4","#e0362c","#2fae5a","#ffffff","#ff8fb1","#7a4fd1","#111"];
+  const cabelos=["#3a2a1e","#151515","#8a5a2b","#e0b860","#5b3a26"];
+  const peles=["#c98d5a","#8d5a3a","#e8b98f","#6b4128","#d9a074"];
+  const carros=["#e0362c","#f4f4f4","#1f4fb4","#222","#f6c445","#9aa3ab"];
+  const r=a=>a[Math.floor(Math.random()*a.length)];
+  const lista=[
+    // só o calçadão: uma ciclista e duas pessoas caminhando
+    ["bike","m",noCalc(.32),"sobe",18,-3],
+    ["pessoa","m",noCalc(.62),"desce",40,-14],["pessoa","m",noCalc(.4),"sobe",46,-33]
+  ];
+  const tam={bike:[20,48,"-10 -24 20 48"],pessoa:[20,20,"-10 -10 20 20"],carro:[30,60,"-12 -24 24 48"]};
+  const box=document.getElementById("movimento");
+  lista.forEach(([tipo,onde,left,dir,dur,delay])=>{
+    const [w,h,vb]=tam[tipo];
+    const s=document.createElementNS(SVGNS,"svg");
+    s.setAttribute("class",`movel ${onde}`);s.setAttribute("viewBox",vb);
+    if(tipo==="carro"){s.style.width=carroW;s.style.height="auto";s.style.aspectRatio="1 / 2";}
+    else{s.setAttribute("width",w);s.setAttribute("height",h);}
+    s.style.left=left;
+    s.style.animationName=dir;s.style.animationDuration=dur+"s";s.style.animationDelay=delay+"s";
+    s.style.setProperty("--camisa",r(camisas));s.style.setProperty("--cabelo",r(cabelos));
+    s.style.setProperty("--pele",r(peles));s.style.setProperty("--capacete",r(["#e0362c","#1f4fb4","#111","#f6c445","#fff"]));
+    s.style.setProperty("--quadro",r(["#d22","#1f4fb4","#2fae5a","#111"]));s.style.setProperty("--cor",r(carros));
+    s.innerHTML=`<use href="#${tipo}"/>`;
+    box.appendChild(s);
+  });
+})();
+
+/* ====== guarda-sóis e cangas na areia (só PC) ====== */
+(function(){
+  const box=document.getElementById("areiaDeco");
+  const vao="(50vw - var(--meia) - var(--w-calcada))";     // areia livre entre o calçadão e o convite
+  const x=f=>`calc(var(--w-calcada) + ${vao} * ${f})`;
+  // guarda-sol octogonal visto de cima: faixas concêntricas + gomos
+  const guardaSol=(cores,giro=0)=>{
+    const oct=r=>Array.from({length:8},(_,i)=>{const a=(i*45+22.5+giro)*Math.PI/180;return `${(Math.cos(a)*r).toFixed(1)},${(Math.sin(a)*r).toFixed(1)}`}).join(" ");
+    let faixas="";const n=9;
+    for(let i=0;i<n;i++){faixas+=`<polygon points="${oct(60-i*6.2)}" fill="${cores[i%2]}"/>`;}
+    let gomos="";
+    for(let i=0;i<8;i++){const a=(i*45+22.5+giro)*Math.PI/180;gomos+=`<line x1="0" y1="0" x2="${(Math.cos(a)*60).toFixed(1)}" y2="${(Math.sin(a)*60).toFixed(1)}" stroke="rgba(0,0,0,.10)" stroke-width="1"/>`;}
+    // metade do guarda-sol um pouco mais escura: dá volume
+    const meia=`<polygon points="${oct(60).split(" ").slice(2,6).join(" ")} 0,0" fill="rgba(0,0,0,.06)"/>`;
+    return `<svg class="gs-cima" viewBox="-64 -64 128 128">${faixas}${gomos}${meia}
+      <polygon points="${oct(60)}" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="1.2"/>
+      <circle r="4" fill="#6b5232"/><circle r="1.8" fill="#a8875a"/></svg>`;
+  };
+  const chinelo=c=>`<svg class="chinelo" viewBox="0 0 30 34"><ellipse cx="9" cy="17" rx="6" ry="14" fill="${c}"/><ellipse cx="22" cy="18" rx="6" ry="14" fill="${c}"/>
+    <path d="M9 9 L4 17 M9 9 L14 17 M22 10 L17 18 M22 10 L27 18" stroke="#2fae5a" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+  const itens=[
+    // [html, f (0 = calçadão, 1 = convite), topo em px, rotação, estilo extra]
+    [guardaSol(["#5b86c4","#f4ecdc"]),.16,90,0],
+    [`<div class="canga" style="--a:#d9634a;--b:#f2dfb8"></div>`,.62,150,-12],
+    [chinelo("#f6c445"),.66,300,18],
+    [guardaSol(["#e39a4f","#fbf3e4"],10),.5,560,0],
+    [`<div class="canga" style="--a:#e89aa6;--b:#fbf3e4"></div>`,.12,650,8],
+    [`<div class="canga" style="--a:#4f7fbf;--b:#f4ecdc"></div>`,.3,680,14],
+    [guardaSol(["#d9634a","#f2dfb8"],5),.22,1080,0],
+    [`<div class="canga" style="--a:#5fa37a;--b:#f2dfb8"></div>`,.68,1120,-6],
+    [chinelo("#5b86c4"),.42,1260,-20],
+    [guardaSol(["#5fa37a","#f4ecdc"],15),.6,1560,0],
+    [`<div class="canga" style="--a:#e3b24f;--b:#4f7fbf"></div>`,.18,1640,10]
+  ];
+  itens.forEach(([html,f,top,rot])=>{
+    const d=document.createElement("div");d.innerHTML=html;const el=d.firstElementChild;
+    el.style.left=x(f);el.style.top=top+"px";if(rot)el.style.transform=`rotate(${rot}deg)`;
+    box.appendChild(el);
+  });
+})();
+
+/* ====== mar ====== */
+function desenhaMar(){
+  const box=document.getElementById("mar");
+  const w=box.clientWidth, W=w+30, h=Math.max(box.clientHeight,window.innerHeight,screen.height||0)+140;
+  // sorteio com semente fixa: o desenho sai igual toda vez
+  let semente=7;const rnd=()=>((semente=(semente*16807)%2147483647)/2147483647);
+  // borda macia e irregular (soma de ondas lentas)
+  const A=1+Math.max(0,w-120)/220;   // mar largo (PC) = ondulações maiores
+  const borda=(base,amp,s)=>y=>base+amp*A*(.62*Math.sin(y/(88*Math.sqrt(A))+s)+.28*Math.sin(y/41+2.1*s)+.1*Math.sin(y/19+3.3*s));
+  const caminho=f=>{let d="";for(let y=-10;y<=h+10;y+=6){d+=(d?"L":"M")+f(y).toFixed(1)+" "+y}return d};
+  const ate=f=>caminho(f)+`L${W} ${h+10} L${W} -10 Z`;
+  const entre=(fa,fb)=>{let d=caminho(fa);for(let y=h+10;y>=-10;y-=6){d+="L"+fb(y).toFixed(1)+" "+y}return d+"Z"};
+  // cada camada vira uma imagem estática; a animação move só a imagem
+  const camada=(cls,inner)=>{
+    const s=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${h}" viewBox="0 0 ${W} ${h}">${inner}</svg>`;
+    return `<img class="${cls}" alt="" width="${W}" height="${h}" src="data:image/svg+xml;charset=utf-8,${encodeURIComponent(s)}">`;
+  };
+
+  const praia=borda(26,9,.4);
+  const k=Math.max(w,90);
+  /* faixas de água do raso (claro) ao fundo (escuro), estilo ilustração lisa */
+  const faixas=[
+    [praia,"#c9dbd2"],
+    [borda(26+k*.15,10,1.7),"#a2d3cd"],
+    [borda(26+k*.31,11,2.9),"#82c4c5"],
+    [borda(26+k*.5,12,4.1),"#6bb4b8"],
+    [borda(26+k*.72,13,5.6),"#5aa3a9"]
+  ];
+  /* areia molhada: faixa e manchas mais escuras atrás da espuma */
+  let fundo=`<path d="${ate(y=>praia(y)-12+3*Math.sin(y/23))}" fill="#ebd2a2"/>`;
+  for(let y=20;y<h;y+=60+rnd()*90){
+    const ry=6+rnd()*9, cx=praia(y)-14-rnd()*12;
+    fundo+=`<ellipse cx="${cx.toFixed(1)}" cy="${y.toFixed(0)}" rx="${(3+rnd()*3).toFixed(1)}" ry="${ry.toFixed(1)}" fill="#e6cc9a" opacity=".7"/>`;
+  }
+  faixas.forEach(([f,cor])=>{fundo+=`<path d="${ate(f)}" fill="${cor}"/>`;});
+
+  /* espuma: faixa branca com bolinhas do lado da água */
+  const espFim=y=>praia(y)+6+5*(.5+.5*Math.sin(y/29+1));
+  let espuma=`<path d="${entre(y=>praia(y)-3,espFim)}" fill="#fffdf8"/>`;
+  for(let i=0;i<h/9;i++){
+    const y=rnd()*h, x=espFim(y)+2+rnd()*16, r=.7+rnd()*1.8;
+    espuma+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(0)}" r="${r.toFixed(1)}" fill="#fffdf8" opacity="${(.6+rnd()*.4).toFixed(2)}"/>`;
+  }
+
+  box.innerHTML=camada("fundo",fundo)+camada("anim swash",espuma);
+}
+desenhaMar();
+let tMar;addEventListener("resize",()=>{clearTimeout(tMar);tMar=setTimeout(desenhaMar,200)});
+
+/* ====== contagem ====== */
+(function(){
+  const hoje=new Date(); hoje.setHours(0,0,0,0);
+  const festa=new Date(CONFIG.DATA_FESTA); festa.setHours(0,0,0,0);
+  const d=Math.round((festa-hoje)/86400000);
+  const selo=document.getElementById("selo");
+  if(d>1){document.getElementById("dias").textContent=d;}
+  else if(d===1){selo.innerHTML="<small>é</small><strong>amanhã</strong>";selo.querySelector("strong").style.fontSize="1.5rem";}
+  else if(d===0){selo.innerHTML="<small>é</small><strong>hoje!</strong>";selo.querySelector("strong").style.fontSize="2rem";}
+  else selo.hidden=true;
+})();
+
+/* ====== cachorro do "não" ====== */
+const palco=document.getElementById("palco");
+const balao=document.getElementById("balao");
+let timerPalco=null;
+function mostraDog(frase,fixo){
+  balao.textContent=frase;palco.classList.add("ativo");clearTimeout(timerPalco);
+  if(!fixo) timerPalco=setTimeout(escondeDog,5000);
+}
+function escondeDog(){palco.classList.remove("ativo");clearTimeout(timerPalco);}
+palco.addEventListener("click",escondeDog);
+
+/* ====== carimbo ====== */
+function carimba(texto,cor){
+  const c=document.getElementById("carimbo");
+  c.textContent=texto;c.style.setProperty("--c",cor);
+  c.classList.remove("bate");void c.offsetWidth;c.classList.add("bate");
+}
+
+/* ====== brinde ====== */
+function brinde(){
+  const b=document.getElementById("brinde");
+  const g=document.getElementById("gotas");g.innerHTML="";
+  for(let i=0;i<16;i++){
+    const s=document.createElement("span");s.className="gota";
+    const ang=-Math.PI*Math.random(), r=50+Math.random()*80;
+    s.style.setProperty("--x",Math.cos(ang)*r+"px");s.style.setProperty("--y",Math.sin(ang)*r+"px");
+    const sz=4+Math.random()*8;s.style.width=s.style.height=sz+"px";g.appendChild(s);
+  }
+  b.classList.remove("ativo");void b.offsetWidth;b.classList.add("ativo");
+  setTimeout(()=>b.classList.remove("ativo"),2600);
+}
+
+/* ====== formulário ====== */
+const form=document.getElementById("form");
+const botoes=form.querySelectorAll(".escolha button");
+let presenca="";
+botoes.forEach(b=>b.addEventListener("click",()=>{
+  presenca=b.dataset.v;
+  botoes.forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+  document.getElementById("c-presenca").classList.remove("erro");
+  if(presenca==="nao") mostraDog(CONFIG.FRASE_NAO,false); else escondeDog();
+}));
+
+function marca(id,ok){document.getElementById(id).classList.toggle("erro",!ok);return ok;}
+function valida(){
+  let ok=marca("c-presenca",!!presenca);
+  const nome=document.getElementById("nome").value.trim();
+  ok=marca("c-nome",nome.split(/\s+/).filter(p=>p.length>1).length>=2)&&ok;
+  return ok;
+}
+function guardaCopia(dados){
+  try{
+    const k="convite-"+CONFIG.ABA.toLowerCase();
+    const lista=JSON.parse(localStorage.getItem(k)||"[]");
+    lista.push(dados);localStorage.setItem(k,JSON.stringify(lista));
+  }catch(e){}
+}
+
+form.addEventListener("submit",async e=>{
+  e.preventDefault();
+  document.getElementById("falha").hidden=true;
+  if(!valida()){const p=form.querySelector(".erro");if(p)p.scrollIntoView({behavior:"smooth",block:"center"});return;}
+  const dados={
+    aba:CONFIG.ABA,
+    enviado_em:new Date().toLocaleString("pt-BR"),
+    presenca:presenca==="sim"?"Sim":"Não",
+    nome:document.getElementById("nome").value.trim()
+  };
+  const btn=document.getElementById("btn-enviar");
+  btn.disabled=true;btn.textContent="Enviando...";
+  guardaCopia(dados);
+  try{
+    if(CONFIG.ENDPOINT){
+      await fetch(CONFIG.ENDPOINT,{method:"POST",mode:"no-cors",body:new URLSearchParams(dados)});
+    }else{
+      await new Promise(r=>setTimeout(r,600));
+    }
+    mostraSucesso(dados);
+  }catch(err){
+    btn.disabled=false;btn.textContent="Fechar a comanda";
+    document.getElementById("falha").hidden=false;
+  }
+});
+
+function esc(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+function mostraSucesso(d){
+  const primeiro=esc(d.nome.split(/\s+/)[0]);
+  const sim=d.presenca==="Sim";
+  if(sim) escondeDog();
+  document.getElementById("area-form").innerHTML=`<div class="sucesso">
+    <h2>${sim?"Presença confirmada!":"Resposta enviada"}</h2>
+    <p>${sim
+      ?`Que bom, ${primeiro}! Te esperamos no sábado, <strong>21/11</strong>, na Chácara Paraíso do Sol.`
+      :`Obrigado por avisar, ${primeiro}. Vamos sentir sua falta.`}</p>
+    ${sim?`<div class="proximo"><p>Agora falta só o ingresso do day use:</p><a class="btn-ingresso" href="${CONFIG.LOJA}" target="_blank" rel="noopener">Comprar no site da chácara</a></div>`:""}
+    <p class="lembrete">Lembrete: é surpresa. Nem uma palavra pro ${CONFIG.NOME_CURTO}.</p>
+    <a class="btn-link" href="#" onclick="location.reload();return false;">Responder de novo</a>
+  </div>`;
+  document.getElementById("comanda").scrollIntoView({behavior:"smooth",block:"start"});
+  setTimeout(()=>{
+    if(sim){carimba("Confirmado","#e0362c");brinde();}
+    else carimba("Fica pra próxima","#1f4fb4");
+  },450);
+}
+
+/* ====== encerramento automático ====== */
+if(new Date()>=CONFIG.PRAZO_FIM){
+  document.body.classList.add("encerrado");
+  document.getElementById("titulo-form").textContent="Confirmações encerradas";
+  carimba("Fechada","#1f1b16");
+  mostraDog(CONFIG.FRASE_ENCERRADO,true);
+}
+</script>
+</body>
+</html>

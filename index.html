@@ -1139,5 +1139,68 @@ if(new Date()>=CONFIG.PRAZO_FIM){
   mostraDog(CONFIG.FRASE_ENCERRADO,true);
 }
 </script>
+
+<!-- música de fundo: só baixa quando começa a tocar; começa no primeiro toque na página -->
+<style>
+.som{position:fixed;right:14px;bottom:14px;z-index:45;display:flex;align-items:center;gap:8px;
+  height:52px;padding:0 16px 0 6px;border-radius:999px;border:3px solid var(--vermelho,#e0362c);
+  background:var(--amarelo,#f6c445);color:var(--vermelho,#e0362c);cursor:pointer;
+  font-family:var(--placa,Impact,sans-serif);font-weight:700;font-size:1.15rem;letter-spacing:.05em;text-transform:uppercase;
+  box-shadow:0 6px 0 rgba(0,0,0,.18),0 10px 24px rgba(0,0,0,.18);transition:transform .15s ease,padding .3s ease}
+.som:active{transform:scale(.94)}
+.som:focus-visible{outline:3px solid var(--azul,#1f4fb4);outline-offset:3px}
+.som-disco{width:38px;height:38px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle,var(--amarelo,#f6c445) 0 5px,#1f1b16 6px 100%)}
+.som-ondas{display:flex;align-items:flex-end;gap:3px;height:18px}
+.som-ondas i{display:block;width:4px;height:6px;border-radius:2px;background:currentColor}
+.som.tocando .som-disco{animation:som-gira 2.4s linear infinite}
+.som.tocando .som-ondas i{animation:som-pula .8s ease-in-out infinite}
+.som.tocando .som-ondas i:nth-child(2){animation-delay:.2s}
+.som.tocando .som-ondas i:nth-child(3){animation-delay:.4s}
+.som.tocando .som-txt{display:none}
+.som:not(.tocando) .som-ondas{display:none}
+@keyframes som-gira{to{transform:rotate(360deg)}}
+@keyframes som-pula{0%,100%{height:5px}50%{height:18px}}
+@media (prefers-reduced-motion:reduce){.som.tocando .som-disco,.som.tocando .som-ondas i{animation:none;height:12px}}
+@media (max-width:600px){.som{height:50px;padding:0 6px;right:12px;bottom:12px}.som .som-txt{display:none}.som.tocando{padding:0 12px 0 6px}body::after{content:"";display:block;height:72px}}
+@media print{.som{display:none}}
+</style>
+<audio id="musica" src="img/musica.m4a" preload="none" loop></audio>
+<button type="button" class="som" id="somBtn" aria-pressed="false" aria-label="Tocar música">
+  <span class="som-disco" aria-hidden="true"></span>
+  <span class="som-ondas" aria-hidden="true"><i></i><i></i><i></i></span>
+  <span class="som-txt">Tocar música</span>
+</button>
+<script>
+(function(){
+  var a=document.getElementById('musica'),b=document.getElementById('somBtn');
+  if(!a||!b)return;
+  var VOL=.55,pausadoPelaPessoa=false,fade;
+  function marca(t){b.classList.toggle('tocando',t);b.setAttribute('aria-pressed',t);b.setAttribute('aria-label',t?'Pausar música':'Tocar música');}
+  function toca(){
+    a.volume=0;
+    var p=a.play();
+    if(p&&p.then){p.then(function(){marca(true);clearInterval(fade);fade=setInterval(function(){a.volume=Math.min(VOL,a.volume+.05);if(a.volume>=VOL)clearInterval(fade);},80);}).catch(function(){marca(false);});}
+    else marca(true);
+  }
+  function para(){clearInterval(fade);a.pause();marca(false);}
+  b.addEventListener('click',function(){if(a.paused){pausadoPelaPessoa=false;toca();}else{pausadoPelaPessoa=true;para();}});
+  var EVS=['click','touchend','keydown'];
+  function solta(){EVS.forEach(function(ev){document.removeEventListener(ev,primeiroToque,true);});}
+  function primeiroToque(e){
+    if(b.contains(e.target))return;
+    if(pausadoPelaPessoa){solta();return;}
+    if(a.paused)toca();
+  }
+  EVS.forEach(function(ev){document.addEventListener(ev,primeiroToque,true);});
+  a.addEventListener('playing',solta);
+  var estavaTocando=false;
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden){estavaTocando=!a.paused;if(estavaTocando)a.pause();}
+    else if(estavaTocando&&!pausadoPelaPessoa){a.play().catch(function(){marca(false);});}
+  });
+  a.addEventListener('error',function(){b.style.display='none';});
+})();
+</script>
 </body>
 </html>
